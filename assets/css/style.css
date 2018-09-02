@@ -1,0 +1,26 @@
+.card-img-top {
+    width: 200px;
+}
+.topCards {
+    display: inline-flex;
+    flex-wrap: nowrap;
+}
+.middleCards {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    display: none;
+}
+.bottomCards {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    display: none;
+}
+.title {
+    padding-left: 40%;
+}
+#middleRowTitle {
+    display:none;
+}
+#bottomRowTitle {
+    display:none;
+}
