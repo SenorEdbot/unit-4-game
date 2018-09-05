@@ -1,28 +1,36 @@
 $(document).ready(function(){
 //setting up the character objects
 var harryPotter = {
-    name: "Harry Potter",
-    HP: 200,
-    AP: 5,
-    cAP: 5
-}
-var dracoMalfoy = {
-    name: "Draco Malfoy",
-    HP: 140,
-    AP: 21,
-    cAP: 21
-}
-var cedricDiggory = {
-    name: "Cedric Diggory",
-    HP: 180,
+    name: "harry",
+    topClass: "harryTextTop",
+    bottomClass: "harryTextBottom",
+    HP: 72,
     AP: 9,
     cAP: 9
 }
+var dracoMalfoy = {
+    name: "draco",
+    topClass: "dracoTextTop",
+    bottomClass: "dracoTextBottom",
+    HP: 99,
+    AP: 10,
+    cAP: 10
+}
+var cedricDiggory = {
+    name: "cedric",
+    topClass: "cedricTextTop",
+    bottomClass: "cedricTextBottom",
+    HP: 100,
+    AP: 19,
+    cAP: 19
+}
 var choChang = {
-    name: "Cho Chang",
-    HP: 175,
-    AP: 14,
-    cAP: 14
+    name: "cho",
+    topClass: "choTextTop",
+    bottomClass: "choTextBottom",
+    HP: 120,
+    AP: 22,
+    cAP: 22
 }
 //setting an array to the first name of the characters
 var characterArr = ["draco","cedric","cho","harry"];
@@ -152,20 +160,59 @@ $("#gameAttack").on("click",function(){
         //This is where the game logic will run through
         //check to see if the user has hp remaining
         //Some point in here check to see if the user has defeated all enemies
-        console.log(attackerName)
-        console.log(defenderName)
+        //recording the attack from the attacker and updating the text for the defender health points. 
+        defenderName.HP = defenderName.HP - attackerName.AP
+        $("."+defenderName.bottomClass).text("Health Points " + defenderName.HP)
+        //enter logic about what happens when the defender hp hits 0
+        if (defenderName.HP <= 0) {
+            enemiesRemaining -= 1
+            if (enemiesRemaining === 0) {
+                alert("Congratulations! You WON!!!")
+                //Add a reset button here!!!!!!!
+                $("#gameAttack").hide()
+                $("#gameReset").show()
+            }
+            $("#"+defenderName.name+"CardBottom").hide()
+            isDefender = false;
+            $('.userInfo').text('Please select a New Defender')
+        } else {
+            //recording the attack from the defender and updating the text for the attacker health points. 
+            attackerName.HP = attackerName.HP - defenderName.cAP
+            $("."+attackerName.topClass).text("Health Points " + attackerName.HP)
+            //enter logic about what happens when the attacker hp hits 0
+            if (attackerName.HP <= 0) {
+                alert("OH NO!! You Lost! Please Reset to try again.")
+                //Add a reset button here!!!!
+                $("#gameAttack").hide()
+                $("#gameReset").show()
+            }
+            //Double the attacker HP
+            attackerName.AP = attackerName.AP + 15
+        }
+        
     } else {
         return false;
     }
 })
-//The user selects attack
-//Both the attacker and defender lose health (Game logic)
-//      make sure to add points to the user attack
-//game logic would minus hit points
-
-//tell the user if they need to select another opponent or if they have won the game
-//tell the user if they ran out of hp at any point
-
-//have a game winning / losing screen
+$("#gameReset").on("click",function() {
+    $("#dracoCardTop").show()
+    $("#cedricCardTop").show()
+    $("#choCardTop").show()
+    $("#harryCardTop").show()
+    $("#dracoCardTop").css("background-color","white")
+    $("#cedricCardTop").css("background-color","white")
+    $("#choCardTop").css("background-color","white")
+    $("#harryCardTop").css("background-color","white")
+    $("#dracoCardMiddle").hide()
+    $("#cedricCardMiddle").hide()
+    $("#choCardMiddle").hide()
+    $("#harryCardMiddle").hide()
+    $("#dracoCardBottom").hide()
+    $("#cedricCardMiddle").hide()
+    $("#choCardMiddle").hide()
+    $("#harryCardMiddle").hide()
+    //reset all characters HP and AP!!!
+    //reset the text on the top cards!!
+})
 
 })//end of document.ready

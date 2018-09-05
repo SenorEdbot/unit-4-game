@@ -49,3 +49,7 @@
 #gameAttack {
     width: 10%;
 }
+#gameReset {
+    width: 10%;
+    display: none;
+}
