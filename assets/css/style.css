@@ -1,5 +1,5 @@
 .card-img-top {
-    width: 200px;
+    width: 175px;
 }
 .topCards {
     display: inline-flex;
@@ -8,12 +8,10 @@
 .middleCards {
     display: inline-flex;
     flex-wrap: nowrap;
-    display: none;
 }
 .bottomCards {
     display: inline-flex;
     flex-wrap: nowrap;
-    display: none;
 }
 .title {
     padding-left: 40%;
@@ -23,4 +21,31 @@
 }
 #bottomRowTitle {
     display:none;
+}
+#dracoCardMiddle {
+    display: none;
+}
+#cedricCardMiddle {
+    display: none;
+}
+#choCardMiddle {
+    display: none;
+}
+#harryCardMiddle {
+    display: none;
+}
+#dracoCardBottom {
+    display: none;
+}
+#cedricCardBottom {
+    display: none;
+}
+#choCardBottom {
+    display: none;
+}
+#harryCardBottom {
+    display: none;
+}
+#gameAttack {
+    width: 10%;
 }
