@@ -4,7 +4,7 @@ var harryPotter = {
     name: "harry",
     topClass: "harryTextTop",
     bottomClass: "harryTextBottom",
-    HP: 72,
+    HP: 175,
     AP: 9,
     cAP: 9
 }
@@ -12,25 +12,25 @@ var dracoMalfoy = {
     name: "draco",
     topClass: "dracoTextTop",
     bottomClass: "dracoTextBottom",
-    HP: 99,
-    AP: 10,
-    cAP: 10
+    HP: 130,
+    AP: 14,
+    cAP: 14
 }
 var cedricDiggory = {
     name: "cedric",
     topClass: "cedricTextTop",
     bottomClass: "cedricTextBottom",
-    HP: 100,
-    AP: 19,
-    cAP: 19
+    HP: 150,
+    AP: 12,
+    cAP: 12
 }
 var choChang = {
     name: "cho",
     topClass: "choTextTop",
     bottomClass: "choTextBottom",
-    HP: 120,
-    AP: 22,
-    cAP: 22
+    HP: 158,
+    AP: 10,
+    cAP: 10
 }
 //setting an array to the first name of the characters
 var characterArr = ["draco","cedric","cho","harry"];
@@ -168,13 +168,17 @@ $("#gameAttack").on("click",function(){
             enemiesRemaining -= 1
             if (enemiesRemaining === 0) {
                 alert("Congratulations! You WON!!!")
+                $("#"+defenderName.name+"CardBottom").hide()
+                isDefender = false;
+                $('.userInfo').text('Press Reset to play again!')
                 //Add a reset button here!!!!!!!
                 $("#gameAttack").hide()
                 $("#gameReset").show()
-            }
-            $("#"+defenderName.name+"CardBottom").hide()
-            isDefender = false;
-            $('.userInfo').text('Please select a New Defender')
+            } else {
+                $("#"+defenderName.name+"CardBottom").hide()
+                isDefender = false;
+                $('.userInfo').text('Please select a New Defender')
+            }            
         } else {
             //recording the attack from the defender and updating the text for the attacker health points. 
             attackerName.HP = attackerName.HP - defenderName.cAP
@@ -182,12 +186,13 @@ $("#gameAttack").on("click",function(){
             //enter logic about what happens when the attacker hp hits 0
             if (attackerName.HP <= 0) {
                 alert("OH NO!! You Lost! Please Reset to try again.")
+                $('.userInfo').text('Press Reset to play again!')
                 //Add a reset button here!!!!
                 $("#gameAttack").hide()
                 $("#gameReset").show()
             }
             //Double the attacker HP
-            attackerName.AP = attackerName.AP + 15
+            attackerName.AP = attackerName.AP + 3
         }
         
     } else {
@@ -208,11 +213,36 @@ $("#gameReset").on("click",function() {
     $("#choCardMiddle").hide()
     $("#harryCardMiddle").hide()
     $("#dracoCardBottom").hide()
-    $("#cedricCardMiddle").hide()
-    $("#choCardMiddle").hide()
-    $("#harryCardMiddle").hide()
+    $("#cedricCardBottom").hide()
+    $("#choCardBottom").hide()
+    $("#harryCardBottom").hide()
+    $("#middleRowTitle").hide()
+    $("#bottomRowTitle").hide()
+    enemiesRemaining = 3
+    isAttacker = false
+    isDefender = false
     //reset all characters HP and AP!!!
+    harryPotter.HP = 175
+    harryPotter.AP = 9
+    $(".harryTextBottom").text("Health Points: 175")
+    $(".harryTextTop").text("Health Points: 175")
+    dracoMalfoy.HP = 130
+    dracoMalfoy.AP = 14
+    $(".dracoTextBottom").text("Health Points: 130")
+    $(".dracoTextTop").text("Health Points: 130")
+    cedricDiggory.HP = 150
+    cedricDiggory.AP = 12
+    $(".cedricTextBottom").text("Health Points: 150")
+    $(".cedricTextTop").text("Health Points: 150")
+    choChang.HP = 158
+    choChang.AP = 10
+    $(".choTextBottom").text("Health Points: 158")
+    $(".choTextTop").text("Health Points: 158")
+    //Reset user Text
+    $('.userInfo').text("Please select an Attacker.")
     //reset the text on the top cards!!
+    $("#gameReset").hide()
+    $("#gameAttack").show()    
 })
 
 })//end of document.ready

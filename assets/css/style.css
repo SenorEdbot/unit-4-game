@@ -1,3 +1,9 @@
+body {
+    background: url("../images/connectwork.png");
+}
+h1 {
+    color: white;
+}
 .card-img-top {
     width: 175px;
 }
@@ -14,13 +20,18 @@
     flex-wrap: nowrap;
 }
 .title {
-    padding-left: 40%;
+    padding-left: 25%;
+}
+#topRowTitle {
+    color: white;
 }
 #middleRowTitle {
     display:none;
+    color: white;
 }
 #bottomRowTitle {
     display:none;
+    color: white;
 }
 #dracoCardMiddle {
     display: none;
@@ -52,4 +63,9 @@
 #gameReset {
     width: 10%;
     display: none;
+}
+.userInfo {
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
 }
