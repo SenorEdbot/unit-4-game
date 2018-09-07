@@ -51,6 +51,7 @@ function setAttacker(x) {
         $("#middleRowTitle").show()
         $("#"+ characterArr[x] +"CardTop").css("background-color","green")
         $('.userInfo').text("Your Attacker is: " + characterArr[x].charAt(0).toUpperCase() + characterArr[x].slice(1))
+        $('.userInfo2').text('')
         if (x === 0) {
             $("#"+characterArr[1]+"CardTop").hide()
             $("#"+characterArr[2]+"CardTop").hide()
@@ -112,6 +113,7 @@ function setDefender(x) {
         $("#"+ characterArr[x] +"CardBottom").css("color","white")
         $("#"+ characterArr[x] +"CardBottom").css("background-color","black")
         $('.userInfo').text("Your Defender is: " + characterArr[x].charAt(0).toUpperCase() + characterArr[x].slice(1))
+        $('.userInfo2').text('')
         if (x === 0) {
             defenderName = dracoMalfoy
         } else if (x === 1) {
@@ -155,11 +157,13 @@ $("#harryCardMiddle").on("click", function(){
 $("#gameAttack").on("click",function(){
     if(!isAttacker && !isDefender) {
         $('.userInfo').text('Please select an Attacker')
+        $('.userInfo2').text('')
         return false;
     } else if(isAttacker === true && isDefender === false && enemiesRemaining > 0) {
         //This is when there is an attacker but no defender
         //Tell the user to select a new Defender
         $('.userInfo').text('Please select a Defender')
+        $('.userInfo2').text('')
     } else if (isAttacker === true && isDefender === true && enemiesRemaining > 0) {
         //This is where the game logic will run through
         //check to see if the user has hp remaining
@@ -176,6 +180,7 @@ $("#gameAttack").on("click",function(){
                 $("#"+defenderName.name+"CardBottom").hide()
                 isDefender = false;
                 $('.userInfo').text('Press Reset to play again!')
+                $('.userInfo2').text('')
                 //Add a reset button here!!!!!!!
                 $("#gameAttack").hide()
                 $("#gameReset").show()
@@ -183,6 +188,7 @@ $("#gameAttack").on("click",function(){
                 $("#"+defenderName.name+"CardBottom").hide()
                 isDefender = false;
                 $('.userInfo').text('Please select a New Defender')
+                $('.userInfo2').text('')
             }            
         } else {
             //recording the attack from the defender and updating the text for the attacker health points. 
@@ -193,6 +199,7 @@ $("#gameAttack").on("click",function(){
             if (attackerName.HP <= 0) {
                 alert("OH NO!! You Lost! Please Reset to try again.")
                 $('.userInfo').text('Press Reset to play again!')
+                $('.userInfo2').text('')
                 //Add a reset button here!!!!
                 $("#gameAttack").hide()
                 $("#gameReset").show()
