@@ -4,6 +4,7 @@ var harryPotter = {
     name: "harry",
     topClass: "harryTextTop",
     bottomClass: "harryTextBottom",
+    fullname: "Harry Potter",
     HP: 175,
     AP: 9,
     cAP: 9
@@ -12,6 +13,7 @@ var dracoMalfoy = {
     name: "draco",
     topClass: "dracoTextTop",
     bottomClass: "dracoTextBottom",
+    fullname: "Draco Malfoy",
     HP: 130,
     AP: 14,
     cAP: 14
@@ -20,6 +22,7 @@ var cedricDiggory = {
     name: "cedric",
     topClass: "cedricTextTop",
     bottomClass: "cedricTextBottom",
+    fullname: "Cedric Diggory",
     HP: 150,
     AP: 12,
     cAP: 12
@@ -28,6 +31,7 @@ var choChang = {
     name: "cho",
     topClass: "choTextTop",
     bottomClass: "choTextBottom",
+    fullname: "Cho Chang",
     HP: 158,
     AP: 10,
     cAP: 10
@@ -163,6 +167,7 @@ $("#gameAttack").on("click",function(){
         //recording the attack from the attacker and updating the text for the defender health points. 
         defenderName.HP = defenderName.HP - attackerName.AP
         $("."+defenderName.bottomClass).text("Health Points " + defenderName.HP)
+        $(".userInfo").text(attackerName.fullname + " did " + attackerName.AP + " Damage.")
         //enter logic about what happens when the defender hp hits 0
         if (defenderName.HP <= 0) {
             enemiesRemaining -= 1
@@ -183,6 +188,7 @@ $("#gameAttack").on("click",function(){
             //recording the attack from the defender and updating the text for the attacker health points. 
             attackerName.HP = attackerName.HP - defenderName.cAP
             $("."+attackerName.topClass).text("Health Points " + attackerName.HP)
+            $(".userInfo2").text(defenderName.fullname + " did " + defenderName.cAP + " Damage.")
             //enter logic about what happens when the attacker hp hits 0
             if (attackerName.HP <= 0) {
                 alert("OH NO!! You Lost! Please Reset to try again.")
@@ -240,6 +246,7 @@ $("#gameReset").on("click",function() {
     $(".choTextTop").text("Health Points: 158")
     //Reset user Text
     $('.userInfo').text("Please select an Attacker.")
+    $('.userInfo2').text("")
     //reset the text on the top cards!!
     $("#gameReset").hide()
     $("#gameAttack").show()    
